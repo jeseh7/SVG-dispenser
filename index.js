@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Shape = require('./lib/shapes');
+const Shape = require('./lib/shapes').Shape;
+const Circle = require('./lib/shapes').Circle;
+const Triangle = require('./lib/shapes').Triangle;
+const Square = require('./lib/shapes').Square;
 
 const questions = [
     {
@@ -39,15 +42,15 @@ function init() {
         const newTriangle = new Triangle(response.shapeColor, response.textColor, response.text);
         const newSquare = new Square(response.shapeColor, response.textColor, response.text);
         // if statements here
-        if (questions.shape == 'circle'){
+        if (response.shape == 'circle'){
             writeToFile(`${response.shape}.svg`, newCircle.render())
         }
-        else if (questions.shape == 'triangle'){
+        else if (response.shape  == 'triangle'){
             writeToFile(`${response.shape}.svg`, newTriangle.render())
 
         }
-        else if (questions.shape == 'square'){
-                writeToFile(`${response.shape}.svg`, newSquare.render())
+        else if (response.shape == 'square'){
+            writeToFile(`${response.shape}.svg`, newSquare.render())
         }
        
     });
